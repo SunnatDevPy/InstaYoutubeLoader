@@ -274,9 +274,9 @@ async def download_video(message: Message):
 
 async def main():
     await bot.log_out()
-    dp.startup.register(on_start)
-    dp.shutdown.register(on_shutdown)
-    await dp.start_polling(bot, allowed_updates=dp.resolve_used_update_types())
+    # dp.startup.register(on_start)
+    # dp.shutdown.register(on_shutdown)
+    # await dp.start_polling(bot, allowed_updates=dp.resolve_used_update_types())
 
 
 if __name__ == '__main__':
