@@ -6,6 +6,7 @@ import sys
 
 import yt_dlp
 from aiogram import Dispatcher, Bot, F
+from aiogram.client.telegram import TelegramAPIServer
 from aiogram.filters import CommandStart
 from aiogram.types import BotCommand, Message, FSInputFile
 from aiogram.utils.markdown import hlink
@@ -14,7 +15,9 @@ from config import conf
 from models import User
 from models import db
 
-bot = Bot(token=conf.bot.BOT_TOKEN)
+local_server = TelegramAPIServer.from_base('http://localhost:8081')
+
+bot = Bot(token=conf.bot.BOT_TOKEN, server=local_server)
 dp = Dispatcher()
 import instaloader
 
@@ -213,10 +216,10 @@ async def download_video(message: Message):
 
 
 async def main():
-    await bot.log_out()
-    # dp.startup.register(on_start)
-    # dp.shutdown.register(on_shutdown)
-    # await dp.start_polling(bot, allowed_updates=dp.resolve_used_update_types())
+    # await bot.log_out()
+    dp.startup.register(on_start)
+    dp.shutdown.register(on_shutdown)
+    await dp.start_polling(bot, allowed_updates=dp.resolve_used_update_types())
 
 
 if __name__ == '__main__':
