@@ -15,9 +15,9 @@ from config import conf
 from models import User
 from models import db
 
-local_server = TelegramAPIServer.from_base('http://localhost:8081')
+# local_server = TelegramAPIServer.from_base('http://localhost:8081')
 
-bot = Bot(token=conf.bot.BOT_TOKEN, server=local_server)
+bot = Bot(token=conf.bot.BOT_TOKEN)
 dp = Dispatcher()
 import instaloader
 
