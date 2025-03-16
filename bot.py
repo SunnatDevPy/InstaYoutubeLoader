@@ -9,7 +9,6 @@ from aiogram import Dispatcher, Bot, F
 from aiogram.filters import CommandStart
 from aiogram.types import BotCommand, Message, FSInputFile
 from aiogram.utils.markdown import hlink
-# from pyrogram import Client
 
 from config import conf
 from models import User
@@ -174,65 +173,6 @@ async def download_instagram_video(message: Message) -> None:
             except:
                 pass
 
-
-# API_ID = "22813640"
-# API_HASH = "4115833a644363deb094e446f71b0afe"
-# userbot = Client("userbot", api_id=API_ID, api_hash=API_HASH)
-#
-
-# @dp.message()
-# async def download_video(message: Message):
-#     url = message.text.strip()
-#
-#     # Проверяем, является ли ссылка на YouTube
-#     if "youtube.com" not in url and "youtu.be" not in url:
-#         await message.reply("⚠️ Пожалуйста, отправьте ссылку на YouTube-видео!")
-#         return
-#
-#     await message.reply("⏳ Загружаем видео, подождите...")
-#
-#     # Скачиваем видео с yt-dlp
-#     ydl_opts = {"format": "bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4", "outtmpl": "video.mp4"}
-#     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-#         ydl.download([url])
-#
-#     # Отправляем видео через Pyrogram
-#     with userbot:
-#         await userbot.send_video(message.chat.id, "video.mp4", caption="🎬 Ваше видео")
-#
-#     await message.reply("✅ Видео отправлено!")
-
-
-# @dp.message()
-# async def download_video(message: Message):
-#     video_url = message.text.strip()
-#
-#     if "youtube.com" not in video_url and "youtu.be" not in video_url:
-#         await message.reply("❌ Iltimos, YouTube havolasini yuboring!")
-#         return
-#
-#     await message.reply("⏳ Video yuklanmoqda...")
-#
-#     ydl_opts = {
-#         "format": "bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4",
-#         "outtmpl": "video.mp4",
-#     }
-#
-#     try:
-#         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-#             info = ydl.extract_info(video_url, download=True)
-#             file_path = ydl.prepare_filename(info)
-#             title = info.get("title", "video")
-#
-#         # Отправляем видео
-#         video = FSInputFile(file_path)
-#         await message.answer_video(video, caption=f"📺 {hlink('YouTube', video_url)} dan yuklandi!")
-#
-#         # Удаляем видео после отправки
-#         os.remove(file_path)
-#
-#     except Exception as e:
-#         await message.reply(f"⚠️ Xatolik yuz berdi: {e}")
 
 @dp.message()
 async def download_video(message: Message):
