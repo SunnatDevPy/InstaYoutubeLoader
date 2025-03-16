@@ -9,7 +9,7 @@ from aiogram import Dispatcher, Bot, F
 from aiogram.filters import CommandStart
 from aiogram.types import BotCommand, Message, FSInputFile
 from aiogram.utils.markdown import hlink
-from pyrogram import Client
+# from pyrogram import Client
 
 from config import conf
 from models import User
@@ -175,10 +175,10 @@ async def download_instagram_video(message: Message) -> None:
                 pass
 
 
-API_ID = "22813640"
-API_HASH = "4115833a644363deb094e446f71b0afe"
-userbot = Client("userbot", api_id=API_ID, api_hash=API_HASH)
-
+# API_ID = "22813640"
+# API_HASH = "4115833a644363deb094e446f71b0afe"
+# userbot = Client("userbot", api_id=API_ID, api_hash=API_HASH)
+#
 
 # @dp.message()
 # async def download_video(message: Message):
