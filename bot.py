@@ -33,8 +33,8 @@ async def on_start(bot: Bot):
 
 
 # Instagram credentials
-INSTAGRAM_USERNAME = "_sunnat_0515_"
-INSTAGRAM_PASSWORD = "66607740"
+INSTAGRAM_USERNAME = "myfish.sunnat"
+INSTAGRAM_PASSWORD = "Sunnat_chef678"
 
 # Initialize Instagram loader
 L = instaloader.Instaloader(
@@ -198,12 +198,10 @@ async def download_video(message: Message):
             file_path = ydl.prepare_filename(info)
             compressed_path = "compressed.mp4"
 
-        # Сжимаем видео с FFMPEG (уменьшаем битрейт)
         subprocess.run([
             "ffmpeg", "-i", file_path, "-vf", "scale=1280:720",
             "-b:v", "500k", "-b:a", "128k", "-preset", "fast", compressed_path
         ], check=True)
-        # Отправляем сжатое видео
         video = FSInputFile(compressed_path)
         await message.answer_video(video, caption=f"📺 {hlink('YouTube', video_url)} dan yuklandi!")
 
@@ -216,7 +214,6 @@ async def download_video(message: Message):
 
 
 async def main():
-    # await bot.log_out()
     dp.startup.register(on_start)
     dp.shutdown.register(on_shutdown)
     await dp.start_polling(bot, allowed_updates=dp.resolve_used_update_types())
@@ -226,8 +223,3 @@ if __name__ == '__main__':
     logging.basicConfig(level=logging.INFO, stream=sys.stdout)
     asyncio.run(main())
 
-# 1065  docker login
-# 1068  docker build -t nickname/name .
-# 1071  docker push nickname/name
-
-# docker run --name db_mysql -e MYSQL_ROOT_PASSWORD=1 -d mysql
